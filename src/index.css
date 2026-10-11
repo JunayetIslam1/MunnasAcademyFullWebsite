@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Notice board: lines scroll from bottom to top, pause on hover */
+@keyframes notice-up {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+.notice-scroll {
+  animation: notice-up var(--dur, 90s) linear infinite;
+}
+.notice-scroll:hover,
+.notice-scroll:focus-within {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .notice-scroll { animation: none; }
+}
